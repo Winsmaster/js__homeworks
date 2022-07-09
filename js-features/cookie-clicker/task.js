@@ -5,29 +5,32 @@ const big = 300;
 const small = 200;
 
 
-picture.onclick = function() {
+
+picture.addEventListener("click", () => {
     document.getElementById("clicker__counter").textContent = counterClick++
-    if (picture.width === big) {
-        
+    if (picture.width === big) {        
         picture.width = small;
     } else 
-        picture.width = big;
-    
-}
+        picture.width = big;    
+})
 
 let speedClick;
-let firstClick = 0;
-let secondClick = 0;
+let start = 0;
+let finish = 0;
 let countClick = 0;
-picture.click = function() {
+picture.addEventListener("click", () => {
     countClick++
     if (countClick === 1) {
         let now = new Date();
-        firstClick = now.getTime();
+        start = now.getTime();
     } else {
         let after = new Date();
-        secondClick = after.getTime();
-        speedClick = 1000/(secondClick - firstClick);
-        countClick = 0;
-        document.getElementById("clicker__speed").textContent = speedClick;        
-    }}
+        finish = after.getTime();
+        speedClick = (1000/(finish - start)).toFixed(2);
+        countClick = 1;
+        document.getElementById("clicker__speed").textContent = speedClick;
+        start = finish;       
+    }   
+})
+
+
