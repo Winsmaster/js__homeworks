@@ -17,6 +17,17 @@ class Game {
   }
 
   registerEvents() {
+    document.addEventListener('keyup', function(event) {   
+      let currentKey = event.key.charCodeAt();
+      let currentSym = document.querySelector(".symbol_current").innerHTML.charCodeAt();
+      console.log(currentKey, currentSym)
+      if (currentKey === currentSym) {
+        this.success()
+      } else this.fail();
+        })   
+        
+       
+
     /*
       TODO:
       Написать обработчик события, который откликается
@@ -88,3 +99,6 @@ class Game {
 
 new Game(document.getElementById('game'))
 
+
+
+    
