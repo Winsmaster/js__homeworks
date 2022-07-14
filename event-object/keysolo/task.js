@@ -17,14 +17,13 @@ class Game {
   }
 
   registerEvents() {
-    document.addEventListener('keyup', function(event) {   
+    
+    document.addEventListener('keyup', (event) => {   
       let currentKey = event.key.charCodeAt();
       let currentSym = document.querySelector(".symbol_current").innerHTML.charCodeAt();
-      console.log(currentKey, currentSym)
-      if (currentKey === currentSym) {
-        this.success()
-      } else this.fail();
-        })   
+      (currentKey === currentSym) ? this.success() : this.fail();
+        })
+
         
        
 
@@ -38,12 +37,12 @@ class Game {
   }
 
   success() {
-    this.currentSymbol.classList.add('symbol_correct');
+    this.currentSymbol.classList.add("symbol_correct");
     this.currentSymbol = this.currentSymbol.nextElementSibling;
+    
     if (this.currentSymbol !== null) {
       return;
     }
-
     if (++this.winsElement.textContent === 10) {
       alert('Победа!');
       this.reset();
