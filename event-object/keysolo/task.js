@@ -20,7 +20,7 @@ class Game {
     
     document.addEventListener('keyup', (event) => {   
       let currentKey = event.key.charCodeAt();
-      let currentSym = document.querySelector(".symbol_current").innerHTML.charCodeAt();
+      let currentSym = this.currentSymbol.textContent.charCodeAt();
       (currentKey === currentSym) ? this.success() : this.fail();
         })
 
