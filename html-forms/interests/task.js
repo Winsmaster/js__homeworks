@@ -1,12 +1,18 @@
-const interestCheck = document.querySelectorAll('.interest__check') 
+const interestCheck = [...document.querySelectorAll(".interest__check")] 
  
-for (const temp of interestCheck) { 
-    temp.addEventListener('change', () => { 
-        if(temp.checked == true && temp.closest('label').nextElementSibling != null){ 
-            let tempChecked = temp.closest('label').nextElementSibling.querySelectorAll('.interest__check') 
-                for(let temp of tempChecked){ 
-                temp.checked = true 
-            }  
-        } 
-    })   
+for (let item of interestCheck){
+    interestCheck.checked = false;
+}
+
+interestCheck.forEach((check) => check.addEventListener("change", checkAllChekboxes));
+
+function checkAllChekboxes(event) {
+    const parent = event.target.closest(".interest");
+    const children = [...parent.querySelectorAll(".interest__check")];
+
+    console.log(event.target.parentElement.textContent.trim())
+
+    for (let child of children){
+        child.checked = this.checked;
+    }
 }
