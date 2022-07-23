@@ -8,14 +8,23 @@ function Add () {
     let text = inputToDo.value;
     console.log(text)
     if (text.length > 0) {
-        taskList.innerHTML += `<div class="task">
+        const task = document.createElement("div")
+        task.classList.add("task")
+        taskList.appendChild(task);
+      task.innerHTML += `
         <div class="task__title">
           ${text}
         </div>
         <a href="#" class="task__remove">&times;</a>
       </div>`
     
-    
+    let removeItem = task.querySelector(".task__remove")
+      removeItem.addEventListener("click", (e) => {
+        e.target.closest(".task").remove();
+      })
+
+
+
         inputToDo.value = ""
         return false
 }}
@@ -26,9 +35,4 @@ inputToDo.change = Add
 
 
        
- for (let item of removeTask) {
-    item.onclick = () => {
-    item.closest(".task")
-    console.log (item.closest(".task"))
-    console.log (removeTask)
- }}
+ 

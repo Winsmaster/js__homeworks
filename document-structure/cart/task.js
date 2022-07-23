@@ -2,8 +2,7 @@ const minus = document.querySelectorAll(".product__quantity-control_dec")
 const plus = document.querySelectorAll(".product__quantity-control_inc")
 const productAdd = document.querySelectorAll(".product__add")
 const cart = document.querySelector(".cart__products")
-
-
+const productList = document.querySelectorAll(".product")
 
 for (let item of minus) {
     item.onclick = () => {
@@ -27,34 +26,27 @@ for (let item of plus) {
 for (let item of productAdd) {
     item.onclick = () => {
         let itemCart = document.querySelectorAll(".cart__product")
-
-        let obj = item.previousElementSibling.firstElementChild.nextElementSibling
+        let obj = item.previousElementSibling.querySelector(".product__quantity-value")
         let value = +obj.textContent
-
         let id = item.closest(".product").getAttributeNode("data-id").value
-        let srcImg = item.closest(".product").firstElementChild.nextElementSibling.getAttributeNode("src").value
+        let srcImg = item.closest(".product").querySelector(".product__image").getAttributeNode("src").value
 
-        if (itemCart.length > 0) {
-            for (let item of itemCart) {
-                if (item.getAttributeNode("data-id").value = id) {
-                    console.log(item)
-                }
-        }
-    }
+        const div = document.createElement("div")
+                  
+            div.classList.add("cart__product")
+            div.setAttribute("id", id)
+            div.innerHTML += `
+            <img class="cart__product-image" src=${srcImg}>
+            <div class="cart__product-count">${value}</div>`
 
-        
-        
-
-        cart.innerHTML += `
-        <div class="cart__product" data-id=${id}>
-        <img class="cart__product-image" src=${srcImg}>
-        <div class="cart__product-count">${value}</div>
-        </div>`
-
-        
-    }
-
-
-
+            
+            
+            if (document.getElementById(id)) {                
+                   const renderProduct = document.getElementById(id);
+                   renderProduct.querySelector(".cart__product-count").textContent = +renderProduct.querySelector(".cart__product-count").textContent + value;                   
+                   
+        }  else {  
+            cart.appendChild(div)};
     
+}
 }
