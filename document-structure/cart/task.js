@@ -25,7 +25,6 @@ for (let item of plus) {
 
 for (let item of productAdd) {
     item.onclick = () => {
-        let itemCart = document.querySelectorAll(".cart__product")
         let obj = item.previousElementSibling.querySelector(".product__quantity-value")
         let value = +obj.textContent
         let id = item.closest(".product").getAttributeNode("data-id").value

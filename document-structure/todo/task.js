@@ -5,7 +5,7 @@ let removeTask = document.querySelectorAll(".task__remove");
 
 
 function Add () {
-    let text = inputToDo.value;
+    let text = inputToDo.value.trim();
     console.log(text)
     if (text.length > 0) {
         const task = document.createElement("div")
@@ -26,8 +26,10 @@ function Add () {
 
 
         inputToDo.value = ""
-        return false
-}}
+        
+}
+return false
+}
 
 taskBtn.onclick = Add
 inputToDo.change = Add
