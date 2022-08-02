@@ -1,9 +1,6 @@
 const closeBtn = document.querySelector(".modal__close")
 const popup = document.querySelector(".modal")
 
-document.cookie = "closePopup=" + "true"
-console.log(document.cookie)
-
 if (document.cookie.includes("true")) {
     document.cookie
 } else {

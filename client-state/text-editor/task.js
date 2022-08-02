@@ -5,7 +5,7 @@ input.value = text;
 
 
 
-input.onchange = () => {
+input.oninput = () => {
     localStorage.setItem("saveText", input.value.trim())      
 
 }
